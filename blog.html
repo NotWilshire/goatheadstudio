@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Goat Head Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">GOAT HEAD STUDIO</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="showcase.html">WORK</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>BLOG & NEWS</h1>
+            </div>
+        </section>
+
+        <section class="blog-filters">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="game-dev">GAME DEV</button>
+                    <button class="filter-btn" data-filter="podcasting">PODCASTING</button>
+                    <button class="filter-btn" data-filter="ai-tools">AI TOOLS</button>
+                    <button class="filter-btn" data-filter="news">STUDIO NEWS</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-grid">
+            <div class="container">
+                <div class="blog-post featured" data-category="game-dev">
+                    <div class="post-image">
+                        <div class="pixel-placeholder"></div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-date">01.01.2025</span>
+                        <span class="post-category">GAME DEV</span>
+                        <h2>THE ART OF DESIGNING SATISFYING GAME LOOPS</h2>
+                        <p>In this detailed analysis, we break down what makes a game loop truly satisfying and how developers can implement these principles.</p>
+                        <a href="#" class="read-more">READ POST</a>
+                    </div>
+                </div>
+
+                <div class="blog-post" data-category="podcasting">
+                    <div class="post-image">
+                        <div class="pixel-placeholder"></div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-date">12.15.2024</span>
+                        <span class="post-category">PODCASTING</span>
+                        <h2>SETTING UP A PROFESSIONAL PODCAST STUDIO ON A BUDGET</h2>
+                        <p>You don't need expensive equipment to start a professional-sounding podcast. Here's our guide to building a quality setup without breaking the bank.</p>
+                        <a href="#" class="read-more">READ POST</a>
+                    </div>
+                </div>
+
+                <div class="blog-post" data-category="ai-tools">
+                    <div class="post-image">
+                        <div class="pixel-placeholder"></div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-date">12.01.2024</span>
+                        <span class="post-category">AI TOOLS</span>
+                        <h2>USING AI TO ENHANCE CREATIVITY, NOT REPLACE IT</h2>
+                        <p>How game developers can leverage AI tools to streamline workflows while maintaining creative control and authenticity.</p>
+                        <a href="#" class="read-more">READ POST</a>
+                    </div>
+                </div>
+
+                <div class="blog-post" data-category="news">
+                    <div class="post-image">
+                        <div class="pixel-placeholder"></div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-date">11.15.2024</span>
+                        <span class="post-category">STUDIO NEWS</span>
+                        <h2>GOAT HEAD STUDIO ANNOUNCES NEW GAME: PIXEL DUNGEON</h2>
+                        <p>We're excited to reveal our latest project: a procedurally generated roguelike with intense combat and endless replayability.</p>
+                        <a href="#" class="read-more">READ POST</a>
+                    </div>
+                </div>
+
+                <div class="blog-post" data-category="game-dev">
+                    <div class="post-image">
+                        <div class="pixel-placeholder"></div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-date">11.01.2024</span>
+                        <span class="post-category">GAME DEV</span>
+                        <h2>RETRO AESTHETICS IN MODERN GAME DESIGN</h2>
+                        <p>Exploring how pixel art and retro design choices can create compelling experiences for contemporary audiences.</p>
+                        <a href="#" class="read-more">READ POST</a>
+                    </div>
+                </div>
+
+                <div class="blog-post" data-category="podcasting">
+                    <div class="post-image">
+                        <div class="pixel-placeholder"></div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-date">10.15.2024</span>
+                        <span class="post-category">PODCASTING</span>
+                        <h2>INTERVIEW TECHNIQUES FOR GAMING PODCASTS</h2>
+                        <p>How to conduct engaging interviews with game developers that provide genuine insights into the creative process.</p>
+                        <a href="#" class="read-more">READ POST</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pagination">
+            <div class="container">
+                <div class="pagination-controls">
+                    <a href="#" class="pagination-prev disabled">PREVIOUS</a>
+                    <div class="pagination-numbers">
+                        <a href="#" class="pagination-number active">1</a>
+                        <a href="#" class="pagination-number">2</a>
+                        <a href="#" class="pagination-number">3</a>
+                    </div>
+                    <a href="#" class="pagination-next">NEXT</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <h2>SUBSCRIBE TO OUR NEWSLETTER</h2>
+                <p>Get the latest updates on our games, podcasts, and AI tools straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="YOUR EMAIL ADDRESS" class="newsletter-input">
+                    <button type="submit" class="btn">SUBSCRIBE</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">GOAT HEAD STUDIO</div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="showcase.html">WORK</a></li>
+                        <li><a href="blog.html">BLOG</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-icon">TWITTER</a>
+                    <a href="#" class="social-icon">INSTAGRAM</a>
+                    <a href="#" class="social-icon">GITHUB</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 GOAT HEAD STUDIO. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 
