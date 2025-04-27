@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }, 1500);
 
+    // Initialize mobile menu
+    initMobileMenu();
+
     // Initialize filter buttons
     initFilters();
 
@@ -21,64 +24,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form submission handling
     initForms();
+});
 
-    // FAQ Category Filters
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    if (categoryButtons.length > 0) {
-        const faqItems = document.querySelectorAll('.faq-item');
+// Mobile menu functionality
+function initMobileMenu() {
+    // Create the menu button if it doesn't exist yet
+    if (!document.querySelector('.menu-btn')) {
+        const header = document.querySelector('header .container');
+        const nav = document.querySelector('nav');
         
-        // Add click event to category buttons
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const category = button.getAttribute('data-category');
-                
-                // Show all items if "all" category is selected
-                if (category === 'all') {
-                    faqItems.forEach(item => {
-                        item.style.display = 'block';
-                    });
-                } else {
-                    // Otherwise, show only items matching the selected category
-                    faqItems.forEach(item => {
-                        if (item.getAttribute('data-category') === category) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                }
-            });
-        });
+        // Create menu button element
+        const menuBtn = document.createElement('div');
+        menuBtn.className = 'menu-btn';
+        menuBtn.innerHTML = '<span></span>';
         
-        // FAQ Accordion functionality
-        faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Check if the expanded class is present on the faq-grid
-                const faqGrid = document.querySelector('.faq-grid');
-                if (!faqGrid.classList.contains('expanded')) {
-                    // Toggle active class for accordion effect
-                    const isActive = item.classList.contains('active');
-                    
-                    // First, remove active class from all items
-                    faqItems.forEach(faqItem => {
-                        faqItem.classList.remove('active');
-                    });
-                    
-                    // Then, add active class to clicked item (unless it was already active)
-                    if (!isActive) {
-                        item.classList.add('active');
-                    }
-                }
-            });
+        // Insert menu button after the logo
+        const logo = document.querySelector('.logo');
+        if (logo && header) {
+            header.insertBefore(menuBtn, nav);
+        }
+        
+        // Add click event to toggle menu
+        menuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
         });
     }
-});
+
+    // Close menu when clicking a link (mobile)
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const nav = document.querySelector('nav');
+            
+            // Only do this on mobile screens
+            if (window.innerWidth < 768) {
+                menuBtn.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    });
+
+    // Handle resize events
+    window.addEventListener('resize', function() {
+        const menuBtn = document.querySelector('.menu-btn');
+        const nav = document.querySelector('nav');
+        
+        // Remove active classes on desktop
+        if (window.innerWidth >= 768) {
+            if (menuBtn) menuBtn.classList.remove('active');
+            if (nav) nav.classList.remove('active');
+        }
+    });
+}
 
 // Filter functionality for portfolio and blog items
 function initFilters() {
@@ -211,21 +210,36 @@ function simulateFormSubmission(form, successMessage) {
     }, 2000);
 }
 
+// Touch device detection
+function isTouchDevice() {
+    return (('ontouchstart' in window) || 
+            (navigator.maxTouchPoints > 0) || 
+            (navigator.msMaxTouchPoints > 0));
+}
+
 // Add pixel noise effect randomly across the site
 setInterval(() => {
-    const pixelGlitch = document.createElement('div');
-    pixelGlitch.style.position = 'fixed';
-    pixelGlitch.style.width = '2px';
-    pixelGlitch.style.height = '2px';
-    pixelGlitch.style.backgroundColor = 'white';
-    pixelGlitch.style.zIndex = '9998';
-    pixelGlitch.style.opacity = Math.random() > 0.7 ? '1' : '0.5';
-    pixelGlitch.style.left = Math.random() * window.innerWidth + 'px';
-    pixelGlitch.style.top = Math.random() * window.innerHeight + 'px';
+    // Limit the number of pixel glitches based on screen size
+    const maxGlitches = window.innerWidth <= 768 ? 2 : 5;
     
-    document.body.appendChild(pixelGlitch);
-    
-    setTimeout(() => {
-        pixelGlitch.remove();
-    }, 100 + Math.random() * 200);
+    // Only create new glitches if there aren't too many already
+    const currentGlitches = document.querySelectorAll('.pixel-glitch').length;
+    if (currentGlitches < maxGlitches) {
+        const pixelGlitch = document.createElement('div');
+        pixelGlitch.className = 'pixel-glitch';
+        pixelGlitch.style.position = 'fixed';
+        pixelGlitch.style.width = '2px';
+        pixelGlitch.style.height = '2px';
+        pixelGlitch.style.backgroundColor = 'white';
+        pixelGlitch.style.zIndex = '9998';
+        pixelGlitch.style.opacity = Math.random() > 0.7 ? '1' : '0.5';
+        pixelGlitch.style.left = Math.random() * window.innerWidth + 'px';
+        pixelGlitch.style.top = Math.random() * window.innerHeight + 'px';
+        
+        document.body.appendChild(pixelGlitch);
+        
+        setTimeout(() => {
+            pixelGlitch.remove();
+        }, 100 + Math.random() * 200);
+    }
 }, 200); 
